@@ -1,0 +1,22 @@
+{
+  "name": "promise-file-write",
+  "date": "01-23-2017",
+  "description": "Asynchronously write files with promise flow control.",
+  "main": "promise-file-write.js",
+  "author": {
+    "name": "Scott Johnson"
+  },
+  "license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucentminds/promise-file-write.git"
+  },
+  "dependencies": {
+    "promise-resolve-path": "git+https://github.com/lucentminds/promise-resolve-path.git",
+    "q": ">=1.4.1"
+  }
+}
