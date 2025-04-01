@@ -9,12 +9,11 @@
 /* jshint undef: true, unused: true */
 /* jslint node: true */
 
-var Q = require( 'q' );
 var fs = require( 'fs' );
 var resolve = require( 'promise-resolve-path' );
 
-var writeFile = module.exports = function( aDest, cData, oOptions ){ // jshint ignore:line
-    var deferred = Q.defer();
+function writeFile ( aDest, cData, oOptions ){ // jshint ignore:line
+    var deferred = deferred();
     var cDestType = typeof aDest;
 
     // Determines the options of the files we are writing to.
@@ -63,8 +62,8 @@ var writeFile = module.exports = function( aDest, cData, oOptions ){ // jshint i
 };// /writeFile()
 
 
-var writeOneFile = function( cPath, cData, oOptions ) {
-    var deferred = Q.defer();
+function writeOneFile( cPath, cData, oOptions ) {
+    var deferred = deferred();
 
     fs.writeFile( cPath, cData, oOptions, function ( err ) {
         if ( err ) {
@@ -78,3 +77,21 @@ var writeOneFile = function( cPath, cData, oOptions ) {
     return deferred.promise;
 
 };// /writeOneFile()
+
+
+function deferred(){
+    let resolve, reject;
+    const o_promise = new Promise((res, rej) => {
+        resolve = res;
+        reject = rej;
+    });
+    const o_deferred = {
+        promise: o_promise,
+        resolve: resolve,
+        reject: reject
+    };
+
+    return o_deferred;
+}// /deferred()
+
+module.exports = writeFile;

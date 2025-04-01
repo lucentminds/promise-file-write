@@ -16,7 +16,6 @@
     "url": "https://github.com/lucentminds/promise-file-write.git"
   },
   "dependencies": {
-    "promise-resolve-path": "git+https://github.com/lucentminds/promise-resolve-path.git",
-    "q": ">=1.4.1"
+    "promise-resolve-path": "git+https://github.com/lucentminds/promise-resolve-path.git"
   }
 }
