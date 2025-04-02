@@ -44,7 +44,7 @@ function writeFile ( aDest, cData, oOptions ){ // jshint ignore:line
         }// /for()
         
         // Either wait for all paths to be read or reject one.
-        return Q.all( aPromises );
+        return Promise.all( aPromises );
     })
     .then(function(){
         if( cDestType === 'string' )  {
@@ -54,9 +54,9 @@ function writeFile ( aDest, cData, oOptions ){ // jshint ignore:line
             deferred.resolve( aDest );
         }
     })
-    .fail(function( err ){
+    .catch(function( err ){
        deferred.reject( err );
-    }).done();
+    });
 
     return deferred.promise;
 };// /writeFile()
