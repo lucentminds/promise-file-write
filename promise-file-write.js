@@ -13,7 +13,7 @@ var fs = require( 'fs' );
 var resolve = require( 'promise-resolve-path' );
 
 function writeFile ( aDest, cData, oOptions ){ // jshint ignore:line
-    var deferred = deferred();
+    var deferred = defer();
     var cDestType = typeof aDest;
 
     // Determines the options of the files we are writing to.
@@ -63,7 +63,7 @@ function writeFile ( aDest, cData, oOptions ){ // jshint ignore:line
 
 
 function writeOneFile( cPath, cData, oOptions ) {
-    var deferred = deferred();
+    var deferred = defer();
 
     fs.writeFile( cPath, cData, oOptions, function ( err ) {
         if ( err ) {
@@ -79,7 +79,7 @@ function writeOneFile( cPath, cData, oOptions ) {
 };// /writeOneFile()
 
 
-function deferred(){
+function defer(){
     let resolve, reject;
     const o_promise = new Promise((res, rej) => {
         resolve = res;
@@ -92,6 +92,6 @@ function deferred(){
     };
 
     return o_deferred;
-}// /deferred()
+}// /defer()
 
 module.exports = writeFile;
